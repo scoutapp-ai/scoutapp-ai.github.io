@@ -267,7 +267,7 @@
           </li>
       </ul>
         <ul class="toc-footer">
-            <li><a href='https://scoutapp-ai-staging.herokuapp.com/app/apps'>Scout Developer portal</a></li>
+            <li><a href='https://scoutapp.ai/app/apps'>Scout Developer portal</a></li>
         </ul>
     </div>
     <div class="page-wrapper">
@@ -277,7 +277,7 @@
 <p>Welcome to the Scout API. The Scout API is organized around <a href="https://en.wikipedia.org/wiki/Representational_state_transfer">REST</a>, accepts
 JSON request bodies, and returns JSON encoded responses.</p>
 
-<p>The base URL is <code>https://scoutapp-ai-staging.herokuapp.com/api/v1</code>. Any endpoints described should be appended to the base URL described here.</p>
+<p>The base URL is <code>https://scoutapp.ai/api/v1</code>. Any endpoints described should be appended to the base URL described here.</p>
 
 <p><br>
 <br>
@@ -311,7 +311,7 @@ the <code>optional</code> label like so:</p>
 </blockquote>
 
 <p>The Scout API uses application secret keys in request headers to authenticate requests. You can get your secret key from the
-<a href="https://scoutapp-ai-staging.herokuapp.com/app/apps">developer page</a> inside Scout.</p>
+<a href="https://scoutapp.ai/app/apps">developer page</a> inside Scout.</p>
 
 <p><code>x-api-key: yoursecretkey</code></p>
 <h1 id='acceptable-currencies'>Acceptable currencies</h1>
@@ -366,7 +366,7 @@ To use OAuth, make sure you have your Client ID, Secret Key, and have set redire
 <h2 id='start-oauth-flow'>Start OAuth flow</h2>
 <p>To start the OAuth flow, redirect your user to a URL in this format:</p>
 
-<p><code>https://scoutapp-ai-staging.herokuapp.com/oauth/new?client_id={your client ID}&amp;redirect_uri={your redirect uri}&amp;scopes={comma,separated,scopes}</code></p>
+<p><code>https://scoutapp.ai/oauth/new?client_id={your client ID}&amp;redirect_uri={your redirect uri}&amp;scopes={comma,separated,scopes}</code></p>
 
 <p>If you make this request with an invalid redirect URI that hasn&#39;t been saved in your app settings, or a scope that your application is not approved for,
 your will see an error message.</p>
@@ -374,7 +374,7 @@ your will see an error message.</p>
 <p>This will send whoever completes the flow to <code>https://your-redirect-uri.com/?code=adbccfe15b4da2b6050cba89</code> with a random code.
 You will then exchange this code in the next request for an access token.</p>
 <h2 id='exchange-code-for-access-token'>Exchange code for access token</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="nt">--request</span> POST <span class="se">\</span>
-    <span class="nt">--url</span> https://scoutapp-ai-staging.herokuapp.com/api/v1/oauth/token <span class="se">\</span>
+    <span class="nt">--url</span> https://scoutapp.ai/api/v1/oauth/token <span class="se">\</span>
     <span class="nt">--header</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
     <span class="nt">--header</span> <span class="s1">'x-api-key: yoursecretkey'</span> <span class="se">\</span>
     <span class="nt">--data</span> <span class="s1">'{
@@ -399,7 +399,7 @@ You will then exchange this code in the next request for an access token.</p>
 </span></code></pre></div>
 <p>Exchange an OAuth code for an access token.</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>POST https://scoutapp-ai-staging.herokuapp.com/api/v1/oauth/token</code></p>
+<p><code>POST https://scoutapp.ai/api/v1/oauth/token</code></p>
 <h3 id='body-parameters'>Body Parameters</h3>
 <table><thead>
 <tr>
@@ -417,7 +417,7 @@ You will then exchange this code in the next request for an access token.</p>
 </tr>
 </tbody></table>
 <h2 id='get-user-info-using-access_token'>Get user info using access_token</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--request</span> GET <span class="se">\</span>
-  <span class="nt">--url</span> <span class="s1">'https://scoutapp-ai-staging.herokuapp.com/api/v1/oauth/info?access_token=c9e035bef74b804483b7e306'</span> <span class="se">\</span>
+  <span class="nt">--url</span> <span class="s1">'https://scoutapp.ai/api/v1/oauth/info?access_token=c9e035bef74b804483b7e306'</span> <span class="se">\</span>
   <span class="nt">--header</span> <span class="s1">'x-api-key: yoursecretkey'</span>
 </code></pre></div>
 <blockquote>
@@ -434,7 +434,7 @@ You will then exchange this code in the next request for an access token.</p>
 <p>Validate your stored access token by using it to get user info. If you&#39;re using this on a desktop app, we recommend that you do this on each launch of your application to ensure
 that if they remove access from their account, you reflect that accurately.</p>
 <h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET https://scoutapp-ai-staging.herokuapp.com/api/v1/oauth/info</code></p>
+<p><code>GET https://scoutapp.ai/api/v1/oauth/info</code></p>
 <h3 id='query-parameters'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -455,7 +455,7 @@ To post a user&#39;s checkout, you will first need to fully authenticate them us
 
 <p>The <code>username</code> scope is optional, but encouraged so you can display their Scout username after they sign in.</p>
 <h2 id='post-a-checkout'>Post a checkout</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--request</span> POST <span class="se">\</span>
-  <span class="nt">--url</span> https://ingest.scoutapp.ai/ingest <span class="se">\</span>
+  <span class="nt">--url</span> https://ingest.scoutapp.ai/checkout <span class="se">\</span>
   <span class="nt">--header</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
   <span class="nt">--header</span> <span class="s1">'x-api-key: yoursecretkey'</span> <span class="se">\</span>
   <span class="nt">--data</span> <span class="s1">'{
@@ -471,6 +471,7 @@ To post a user&#39;s checkout, you will first need to fully authenticate them us
   "color": "University Blue",
   "store": "Kith",
   "user_id": 1,
+  "access_token": "c9e035bef74b804483b7e306 ",
   "checkout_time": 1591086812
 }'</span>
 </code></pre></div>
@@ -481,9 +482,10 @@ To post a user&#39;s checkout, you will first need to fully authenticate them us
   </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>Posting a checkout should be done alongside sending any other requests you do on a successful checkout (Discord webhook, analytics webhook, etc.).</p>
+<p>Posting a checkout should be done alongside sending any other requests you do on a successful checkout (Discord webhook, analytics webhook, etc.).
+<strong>PLEASE ONLY POST CHECKOUTS FROM YOUR SERVER, NOT FROM CLIENTS</strong></p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>POST https://ingest.scoutapp.ai/ingest</code></p>
+<p><code>POST https://ingest.scoutapp.ai/checkout</code></p>
 <h3 id='body-parameters'>Body Parameters</h3>
 <table><thead>
 <tr>
@@ -538,6 +540,10 @@ To post a user&#39;s checkout, you will first need to fully authenticate them us
 <tr>
 <td>user_id</td>
 <td>The Scout user&#39;s ID that checked out</td>
+</tr>
+<tr>
+<td>access_token</td>
+<td>The Scout user&#39;s access token</td>
 </tr>
 <tr>
 <td>checkout_time</td>
@@ -595,11 +601,11 @@ make sure you&#39;re using our branding guidelines as much as possible.</p>
 
 <p><img src="https://i.imgur.com/bytEBHM.png" alt="" /></p>
 <h2 id='right-click-and-save-any-of-these-buttons'>Right click and save any of these buttons</h2>
-<p><img src="images/sign_in_blue-4581bc70.svg" alt="" /></p>
+<p><img src="images/sign_in_blue-80314201.svg" alt="" /></p>
 
-<p><img src="images/sign_in_blue_logo-6f01ad97.svg" alt="" /></p>
+<p><img src="images/sign_in_blue_logo-f983a454.svg" alt="" /></p>
 
-<p><img src="images/sign_in_white_logo-45edd373.svg" alt="" /></p>
+<p><img src="images/sign_in_white_logo-97f1f2bb.svg" alt="" /></p>
 
       </div>
       <div class="dark-box">
