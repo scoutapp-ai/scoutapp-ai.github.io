@@ -1,0 +1,606 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Scout API Reference</title>
+
+    <style>
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .gh {
+  color: #999999;
+}
+.highlight .sr {
+  color: #f6aa11;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #75715e;
+}
+.highlight .c1 {
+  color: #75715e;
+}
+.highlight .cs {
+  color: #75715e;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
+  color: #75715e;
+}
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
+}
+.highlight .gd {
+  color: #49483e;
+}
+.highlight .gi {
+  color: #49483e;
+}
+.highlight .ge {
+  color: #49483e;
+}
+.highlight .kc {
+  color: #66d9ef;
+}
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .kt {
+  color: #66d9ef;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
+}
+.highlight .ss {
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s, .highlight .sa, .highlight .dl {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf, .highlight .fm {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+}
+.highlight .nn {
+  color: #ffffff;
+}
+.highlight .ni {
+  color: #ffffff;
+}
+.highlight .bp {
+  color: #ffffff;
+}
+.highlight .vg {
+  color: #ffffff;
+}
+.highlight .vi {
+  color: #ffffff;
+}
+.highlight .nv, .highlight .vm {
+  color: #ffffff;
+}
+.highlight .w {
+  color: #ffffff;
+}
+.highlight {
+  color: #ffffff;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+}
+.highlight .nl {
+  color: #f92672;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
+}
+    </style>
+    <link href="stylesheets/screen-3110b75a.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print-e6e63e86.css" rel="stylesheet" media="print" />
+      <script src="javascripts/all-c5541673.js"></script>
+  </head>
+
+  <body class="index" data-languages="[&quot;shell&quot;]">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="images/navbar-cad8cdcb.png" alt="" />
+      </span>
+    </a>
+    <div class="toc-wrapper">
+      <img src="images/logo-d7eff56c.png" class="logo" alt="" />
+        <div class="lang-selector">
+              <a href="#" data-language-name="shell">shell</a>
+        </div>
+        <div class="search">
+          <input type="text" class="search" id="input-search" placeholder="Search">
+        </div>
+        <ul class="search-results"></ul>
+      <ul id="toc" class="toc-list-h1">
+          <li>
+            <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#example-body-parameters" class="toc-h2 toc-link" data-title="Example Body Parameters">Example Body Parameters</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
+          </li>
+          <li>
+            <a href="#acceptable-currencies" class="toc-h1 toc-link" data-title="Acceptable currencies">Acceptable currencies</a>
+          </li>
+          <li>
+            <a href="#oauth" class="toc-h1 toc-link" data-title="OAuth">OAuth</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#start-oauth-flow" class="toc-h2 toc-link" data-title="Start OAuth flow">Start OAuth flow</a>
+                  </li>
+                  <li>
+                    <a href="#exchange-code-for-access-token" class="toc-h2 toc-link" data-title="Exchange code for access token">Exchange code for access token</a>
+                  </li>
+                  <li>
+                    <a href="#get-user-info-using-access_token" class="toc-h2 toc-link" data-title="Get user info using access_token">Get user info using access_token</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#checkouts" class="toc-h1 toc-link" data-title="Checkouts">Checkouts</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#post-a-checkout" class="toc-h2 toc-link" data-title="Post a checkout">Post a checkout</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
+          </li>
+      </ul>
+        <ul class="toc-footer">
+            <li><a href='https://scoutapp-ai-staging.herokuapp.com/app/apps'>Scout Developer portal</a></li>
+        </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <h1 id='introduction'>Introduction</h1>
+<p>Welcome to the Scout API. The Scout API is organized around <a href="https://en.wikipedia.org/wiki/Representational_state_transfer">REST</a>, accepts
+JSON request bodies, and returns JSON encoded responses.</p>
+
+<p>The base URL is <code>https://scoutapp-ai-staging.herokuapp.com/api/v1</code>. Any endpoints described should be appended to the base URL described here.</p>
+
+<p><br>
+<br>
+URL parameters and body parameters for requests are described by tables. All parameters listed are required, unless they have
+the <code>optional</code> label like so:</p>
+<h3 id='example-body-parameters'>Example Body Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>order_id</td>
+<td>The order ID of the checkout</td>
+</tr>
+<tr>
+<td>tags</td>
+<td>Order tags <code>optional</code></td>
+</tr>
+</tbody></table>
+<h1 id='authentication'>Authentication</h1>
+<blockquote>
+<p>To authorize, use this code:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"api_endpoint_here"</span>
+  <span class="nt">-H</span> <span class="s2">"x-api-key: yoursecretkey"</span>
+</code></pre></div>
+<blockquote>
+<p>Make sure to replace <code>yoursecretkey</code> with your application&#39;s secret key.</p>
+</blockquote>
+
+<p>The Scout API uses application secret keys in request headers to authenticate requests. You can get your secret key from the
+<a href="https://scoutapp-ai-staging.herokuapp.com/app/apps">developer page</a> inside Scout.</p>
+
+<p><code>x-api-key: yoursecretkey</code></p>
+<h1 id='acceptable-currencies'>Acceptable currencies</h1>
+<p>The following currencies are currently accepted in every request:</p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="nl">"currencies"</span><span class="p">:[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+         </span><span class="nl">"code"</span><span class="p">:</span><span class="s2">"usd"</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"symbol"</span><span class="p">:</span><span class="s2">"$"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+         </span><span class="nl">"code"</span><span class="p">:</span><span class="s2">"eur"</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"symbol"</span><span class="p">:</span><span class="s2">"€"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+         </span><span class="nl">"code"</span><span class="p">:</span><span class="s2">"gbp"</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"symbol"</span><span class="p">:</span><span class="s2">"£"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+         </span><span class="nl">"code"</span><span class="p">:</span><span class="s2">"cad"</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"symbol"</span><span class="p">:</span><span class="s2">"C$"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+         </span><span class="nl">"code"</span><span class="p">:</span><span class="s2">"cny"</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"symbol"</span><span class="p">:</span><span class="s2">"¥"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+         </span><span class="nl">"code"</span><span class="p">:</span><span class="s2">"hkd"</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"symbol"</span><span class="p">:</span><span class="s2">"HK$"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+         </span><span class="nl">"code"</span><span class="p">:</span><span class="s2">"aud"</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"symbol"</span><span class="p">:</span><span class="s2">"A$"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+         </span><span class="nl">"code"</span><span class="p">:</span><span class="s2">"dkk"</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"symbol"</span><span class="p">:</span><span class="s2">"Kr."</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+         </span><span class="nl">"code"</span><span class="p">:</span><span class="s2">"sek"</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"symbol"</span><span class="p">:</span><span class="s2">"Kr"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+         </span><span class="nl">"code"</span><span class="p">:</span><span class="s2">"czk"</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"symbol"</span><span class="p">:</span><span class="s2">"Kč"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+   </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h1 id='oauth'>OAuth</h1>
+<p>The Scout API uses an OAuth 2.0 flow in order to grant your application control of user accounts.
+To use OAuth, make sure you have your Client ID, Secret Key, and have set redirect URIs in your app settings.</p>
+<h2 id='start-oauth-flow'>Start OAuth flow</h2>
+<p>To start the OAuth flow, redirect your user to a URL in this format:</p>
+
+<p><code>https://scoutapp-ai-staging.herokuapp.com/oauth/new?client_id={your client ID}&amp;redirect_uri={your redirect uri}&amp;scopes={comma,separated,scopes}</code></p>
+
+<p>If you make this request with an invalid redirect URI that hasn&#39;t been saved in your app settings, or a scope that your application is not approved for,
+your will see an error message.</p>
+
+<p>This will send whoever completes the flow to <code>https://your-redirect-uri.com/?code=adbccfe15b4da2b6050cba89</code> with a random code.
+You will then exchange this code in the next request for an access token.</p>
+<h2 id='exchange-code-for-access-token'>Exchange code for access token</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="nt">--request</span> POST <span class="se">\</span>
+    <span class="nt">--url</span> https://scoutapp-ai-staging.herokuapp.com/api/v1/oauth/token <span class="se">\</span>
+    <span class="nt">--header</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+    <span class="nt">--header</span> <span class="s1">'x-api-key: yoursecretkey'</span> <span class="se">\</span>
+    <span class="nt">--data</span> <span class="s1">'{
+    "code": "adbccfe15b4da2b6050cba89",
+    "redirect_uri": "https://your-redirect-uri.com"
+  }'</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"access_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c9e035bef74b804483b7e306"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"scopes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"checkouts"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"username"</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Exchange an OAuth code for an access token.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>POST https://scoutapp-ai-staging.herokuapp.com/api/v1/oauth/token</code></p>
+<h3 id='body-parameters'>Body Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>code</td>
+<td>The OAuth code given in the <code>code</code> url parameter after finishing the OAuth flow</td>
+</tr>
+<tr>
+<td>redirect_uri</td>
+<td>The <code>redirect_uri</code> url parameter taht was used to begin the OAuth flow</td>
+</tr>
+</tbody></table>
+<h2 id='get-user-info-using-access_token'>Get user info using access_token</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--request</span> GET <span class="se">\</span>
+  <span class="nt">--url</span> <span class="s1">'https://scoutapp-ai-staging.herokuapp.com/api/v1/oauth/info?access_token=c9e035bef74b804483b7e306'</span> <span class="se">\</span>
+  <span class="nt">--header</span> <span class="s1">'x-api-key: yoursecretkey'</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"shrey"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Validate your stored access token by using it to get user info. If you&#39;re using this on a desktop app, we recommend that you do this on each launch of your application to ensure
+that if they remove access from their account, you reflect that accurately.</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>GET https://scoutapp-ai-staging.herokuapp.com/api/v1/oauth/info</code></p>
+<h3 id='query-parameters'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>access_token</td>
+<td>The user&#39;s access token</td>
+</tr>
+</tbody></table>
+<h1 id='checkouts'>Checkouts</h1>
+<p>The Scout checkouts API allows you to post a user&#39;s checkout and have it be added into their Scout inventory as an item.
+To post a user&#39;s checkout, you will first need to fully authenticate them using OAuth with the following scopes:</p>
+
+<p><code>checkouts,username</code></p>
+
+<p>The <code>username</code> scope is optional, but encouraged so you can display their Scout username after they sign in.</p>
+<h2 id='post-a-checkout'>Post a checkout</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--request</span> POST <span class="se">\</span>
+  <span class="nt">--url</span> https://ingest.scoutapp.ai/ingest <span class="se">\</span>
+  <span class="nt">--header</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+  <span class="nt">--header</span> <span class="s1">'x-api-key: yoursecretkey'</span> <span class="se">\</span>
+  <span class="nt">--data</span> <span class="s1">'{
+  "order_id": "123124124",
+  "purchase_currency": "usd",
+  "purchase_price": 15000,
+  "tax": 1500,
+  "shipping_price": 1000,
+  "name": "Nike Air Force 1 Low Off-White",
+  "sku": "CI1173-400",
+  "size": "1",
+  "brand": "Nike",
+  "color": "University Blue",
+  "store": "Kith",
+  "user_id": 1,
+  "checkout_time": 1591086812
+}'</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Posting a checkout should be done alongside sending any other requests you do on a successful checkout (Discord webhook, analytics webhook, etc.).</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>POST https://ingest.scoutapp.ai/ingest</code></p>
+<h3 id='body-parameters'>Body Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>order_id</td>
+<td>The order ID of the purchase made</td>
+</tr>
+<tr>
+<td>purchase_currency</td>
+<td>The currency that the purchase was made in</td>
+</tr>
+<tr>
+<td>purchase_price</td>
+<td>The purchase price in cents ($15.50 purchase = 1550)</td>
+</tr>
+<tr>
+<td>tax</td>
+<td>The purchase tax in cents <code>optional</code></td>
+</tr>
+<tr>
+<td>shipping_price</td>
+<td>The shipping price in cents <code>optional</code></td>
+</tr>
+<tr>
+<td>name</td>
+<td>The name of the item</td>
+</tr>
+<tr>
+<td>sku</td>
+<td>The SKU or Style ID of the item <code>optional</code></td>
+</tr>
+<tr>
+<td>size</td>
+<td>The purchased item&#39;s size. If item size is not present, use <code>OS</code></td>
+</tr>
+<tr>
+<td>brand</td>
+<td>The purchased item&#39;s brand <code>optional</code></td>
+</tr>
+<tr>
+<td>color</td>
+<td>The purchased item&#39;s color <code>optional</code></td>
+</tr>
+<tr>
+<td>store</td>
+<td>The store that the item was purchased at <code>optional</code></td>
+</tr>
+<tr>
+<td>user_id</td>
+<td>The Scout user&#39;s ID that checked out</td>
+</tr>
+<tr>
+<td>checkout_time</td>
+<td>An epoch timestamp in <strong>seconds</strong> of the checkout</td>
+</tr>
+</tbody></table>
+<h1 id='errors'>Errors</h1>
+<aside class="notice">
+This error section is stored in a separate file in <code>includes/_errors.md</code>. Slate allows you to optionally separate out your docs into many files...just save them to the <code>includes</code> folder and add them to the top of your <code>index.md</code>'s frontmatter. Files are included in the order listed.
+</aside>
+
+<p>The Kittn API uses the following error codes:</p>
+
+<table><thead>
+<tr>
+<th>Error Code</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>400</td>
+<td>Bad Request -- Your request is invalid.</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Unauthorized -- Your API key is wrong.</td>
+</tr>
+<tr>
+<td>403</td>
+<td>Forbidden -- The kitten requested is hidden for administrators only.</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Not Found -- The specified kitten could not be found.</td>
+</tr>
+<tr>
+<td>405</td>
+<td>Method Not Allowed -- You tried to access a kitten with an invalid method.</td>
+</tr>
+<tr>
+<td>406</td>
+<td>Not Acceptable -- You requested a format that isn&#39;t json.</td>
+</tr>
+<tr>
+<td>410</td>
+<td>Gone -- The kitten requested has been removed from our servers.</td>
+</tr>
+<tr>
+<td>418</td>
+<td>I&#39;m a teapot.</td>
+</tr>
+<tr>
+<td>429</td>
+<td>Too Many Requests -- You&#39;re requesting too many kittens! Slow down!</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
+</tr>
+<tr>
+<td>503</td>
+<td>Service Unavailable -- We&#39;re temporarily offline for maintenance. Please try again later.</td>
+</tr>
+</tbody></table>
+
+      </div>
+      <div class="dark-box">
+          <div class="lang-selector">
+                <a href="#" data-language-name="shell">shell</a>
+          </div>
+      </div>
+    </div>
+  </body>
+</html>
