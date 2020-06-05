@@ -255,6 +255,17 @@
               </ul>
           </li>
           <li>
+            <a href="#key-resetting" class="toc-h1 toc-link" data-title="Key resetting">Key resetting</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#key-validation-endpoint" class="toc-h2 toc-link" data-title="Key validation endpoint">Key validation endpoint</a>
+                  </li>
+                  <li>
+                    <a href="#key-reset-endpoint" class="toc-h2 toc-link" data-title="Key reset endpoint">Key reset endpoint</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
           </li>
           <li>
@@ -550,6 +561,92 @@ To post a user&#39;s checkout, you will first need to fully authenticate them us
 <td>An epoch timestamp in <strong>seconds</strong> of the checkout</td>
 </tr>
 </tbody></table>
+<h1 id='key-resetting'>Key resetting</h1>
+<p>The key resetting API allows people to reset their connected bot keys by presenting you with authentication information that you 
+can use to verify their ownership. To make this functional, you will need to do 3 simple things:</p>
+
+<ul>
+<li>Get a <strong>key resetting API key</strong> from us which we&#39;ll send to your endpoints</li>
+<li>Create a <strong>key validation</strong> endpoint</li>
+<li>Create a <strong>key reset</strong> endpoint</li>
+</ul>
+
+<p>We&#39;ll require you to make endpoints have the same base_url, with the endpoints <code>/validity</code> and <code>/reset</code>. You may put anything you want before
+that such as <code>/api/v1/scout</code>, <code>/api/scout</code>, or nothing at all.</p>
+
+<p>The key resetting and validation API relies on status codes, and does not require you provide a body with any context.</p>
+<h2 id='key-validation-endpoint'>Key validation endpoint</h2>
+<blockquote>
+<p>The request we&#39;ll send your endpoint to validate</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--request</span> GET <span class="se">\</span>
+  <span class="nt">--url</span> <span class="s1">'https://yourendpoint.com/validity?key=XXXXX-XXXXX-XXXXX-XXXXX&amp;access_token=c9e035bef74b804483b7e306&amp;discord_ids=95889183222034432,95889183222034432'</span> <span class="se">\</span>
+  <span class="nt">--header</span> <span class="s1">'x-api-key: keyresettingapikey'</span>
+</code></pre></div>
+<p>To check validation with your endpoint, we&#39;ll send a request in the format shown above. We&#39;ll send you 3 things. </p>
+
+<ol>
+<li>The <code>key</code> is the key that the user is attempting to validate
+
+<ul>
+<li>Return a <code>404</code> if the key specified doesn&#39;t exist</li>
+</ul></li>
+<li>The <code>access_token</code> is their access token made when signing in with Scout on your application (OAuth)
+
+<ul>
+<li>The <code>access_token</code> should be saved to their user account in your database when they complete the OAuth flow. In this endpoint, you
+should use it to check if the key is bound to a user with this <code>access_token</code>. If so, you should return a <code>200</code>.</li>
+</ul></li>
+<li>The <code>discord_ids</code> is a comma delimited list of discord accounts connected to their Scout account
+
+<ul>
+<li>The <code>discord_ids</code> are used in the case of a Scout user that has multiple keys of your application on different Discord accounts. If we send a <code>discord_id</code> 
+of that is bound to this key, return a <code>200</code>.</li>
+</ul></li>
+</ol>
+
+<p>If checks 2 or 3 fail, return a <code>401</code> unauthorized. If everything passes, return a status <code>200</code> with an empty body.</p>
+<h2 id='key-reset-endpoint'>Key reset endpoint</h2>
+<blockquote>
+<p>The request we&#39;ll send your endpoint to reset</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--request</span> POST <span class="se">\</span>
+  <span class="nt">--url</span> https://yourendpoint.com/reset <span class="se">\</span>
+  <span class="nt">--header</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+  <span class="nt">--header</span> <span class="s1">'x-api-key: botapikey'</span> <span class="se">\</span>
+  <span class="nt">--data</span> <span class="s1">'{
+    "key": "XXXXX-XXXXX-XXXXX-XXXXX",
+    "access_token": "c9e035bef74b804483b7e306",
+    "discord_ids": [
+        "95889183222034432",
+        "95889183222034432",
+        "95889183222034432",
+        "95889183222034432"
+    ]
+}'</span>
+</code></pre></div>
+<p>To check validation with your endpoint, we&#39;ll send a request in the format shown above. We&#39;ll send you 3 things. </p>
+
+<ol>
+<li>The <code>key</code> is the key that the user is attempting to validate
+
+<ul>
+<li>Return a <code>404</code> if the key specified doesn&#39;t exist</li>
+</ul></li>
+<li>The <code>access_token</code> is their access token made when signing in with Scout on your application (OAuth)
+
+<ul>
+<li>Same as validity endpoint</li>
+</ul></li>
+<li>The <code>discord_ids</code> is a comma delimited list of discord accounts connected to their Scout account
+
+<ul>
+<li>Same as validity endpoint</li>
+</ul></li>
+</ol>
+
+<p>If checks 2 or 3 fail, return a <code>401</code> unauthorized. If everything passes, reset the key
+and return a status <code>200</code> with an empty body.</p>
 <h1 id='errors'>Errors</h1>
 <p>The Scout API returns predictable error responses.
 You&#39;ll receive a <code>message</code> parameter that describes the error, and one of the following status codes:</p>
