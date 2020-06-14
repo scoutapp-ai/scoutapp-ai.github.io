@@ -466,7 +466,7 @@ To post a user&#39;s checkout, you will first need to fully authenticate them us
 
 <p>The <code>username</code> scope is optional, but encouraged so you can display their Scout username after they sign in.</p>
 <h2 id='post-a-checkout'>Post a checkout</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--request</span> POST <span class="se">\</span>
-  <span class="nt">--url</span> https://ingest.scoutapp.ai/checkout <span class="se">\</span>
+  <span class="nt">--url</span> https://ingest.scoutapp.ai/checkouts <span class="se">\</span>
   <span class="nt">--header</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
   <span class="nt">--header</span> <span class="s1">'x-api-key: yoursecretkey'</span> <span class="se">\</span>
   <span class="nt">--data</span> <span class="s1">'{
@@ -496,7 +496,7 @@ To post a user&#39;s checkout, you will first need to fully authenticate them us
 <p>Posting a checkout should be done alongside sending any other requests you do on a successful checkout (Discord webhook, analytics webhook, etc.).
 <strong>PLEASE ONLY POST CHECKOUTS FROM YOUR SERVER, NOT FROM CLIENTS</strong></p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>POST https://ingest.scoutapp.ai/checkout</code></p>
+<p><code>POST https://ingest.scoutapp.ai/checkouts</code></p>
 <h3 id='body-parameters'>Body Parameters</h3>
 <table><thead>
 <tr>
@@ -562,7 +562,7 @@ To post a user&#39;s checkout, you will first need to fully authenticate them us
 </tr>
 </tbody></table>
 <h1 id='key-resetting'>Key resetting</h1>
-<p>The key resetting API allows people to reset their connected bot keys by presenting you with authentication information that you 
+<p>The key resetting API allows people to reset their connected bot keys by presenting you with authentication information that you
 can use to verify their ownership. To make this functional, you will need to do 3 simple things:</p>
 
 <ul>
@@ -600,7 +600,7 @@ should use it to check if the key is bound to a user with this <code>access_toke
 <li>The <code>discord_ids</code> is a comma delimited list of discord accounts connected to their Scout account
 
 <ul>
-<li>The <code>discord_ids</code> are used in the case of a Scout user that has multiple keys of your application on different Discord accounts. If we send a <code>discord_id</code> 
+<li>The <code>discord_ids</code> are used in the case of a Scout user that has multiple keys of your application on different Discord accounts. If we send a <code>discord_id</code>
 of that is bound to this key, return a <code>200</code>.</li>
 </ul></li>
 </ol>
