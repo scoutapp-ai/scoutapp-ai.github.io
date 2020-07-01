@@ -390,7 +390,8 @@ You will then exchange this code in the next request for an access token.</p>
     <span class="nt">--header</span> <span class="s1">'x-api-key: yoursecretkey'</span> <span class="se">\</span>
     <span class="nt">--data</span> <span class="s1">'{
     "code": "adbccfe15b4da2b6050cba89",
-    "redirect_uri": "https://your-redirect-uri.com"
+    "redirect_uri": "https://your-redirect-uri.com",
+    "name": "Last 5: 37SB1"
   }'</span>
 </code></pre></div>
 <blockquote>
@@ -404,7 +405,8 @@ You will then exchange this code in the next request for an access token.</p>
     </span><span class="nl">"scopes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="s2">"checkouts"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"username"</span><span class="w">
-    </span><span class="p">]</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Last 5: 37SB1"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
@@ -424,7 +426,11 @@ You will then exchange this code in the next request for an access token.</p>
 </tr>
 <tr>
 <td>redirect_uri</td>
-<td>The <code>redirect_uri</code> url parameter taht was used to begin the OAuth flow</td>
+<td>The <code>redirect_uri</code> url parameter that was used to begin the OAuth flow</td>
+</tr>
+<tr>
+<td>name</td>
+<td>An optional name so that the user has extra context about what they&#39;re connecting besides your application name</td>
 </tr>
 </tbody></table>
 <h2 id='get-user-info-using-access_token'>Get user info using access_token</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--request</span> GET <span class="se">\</span>
@@ -562,7 +568,7 @@ To post a user&#39;s checkout, you will first need to fully authenticate them us
 </tr>
 </tbody></table>
 <h1 id='key-resetting'>Key resetting</h1>
-<p>The key resetting API allows people to reset their connected bot keys by presenting you with authentication information that you
+<p>The key resetting API allows people to reset their connected bot keys by presenting you with authentication information that you 
 can use to verify their ownership. To make this functional, you will need to do 3 simple things:</p>
 
 <ul>
@@ -600,12 +606,12 @@ should use it to check if the key is bound to a user with this <code>access_toke
 <li>The <code>discord_ids</code> is a comma delimited list of discord accounts connected to their Scout account
 
 <ul>
-<li>The <code>discord_ids</code> are used in the case of a Scout user that has multiple keys of your application on different Discord accounts. If we send a <code>discord_id</code>
+<li>The <code>discord_ids</code> are used in the case of a Scout user that has multiple keys of your application on different Discord accounts. If we send a <code>discord_id</code> 
 of that is bound to this key, return a <code>200</code>.</li>
 </ul></li>
 </ol>
 
-<p>If checks 2 and 3 fail, return a <code>401</code> unauthorized. If everything passes, return a status <code>200</code> with an empty body.</p>
+<p>If checks 2 or 3 fail, return a <code>401</code> unauthorized. If everything passes, return a status <code>200</code> with an empty body.</p>
 <h2 id='key-reset-endpoint'>Key reset endpoint</h2>
 <blockquote>
 <p>The request we&#39;ll send your endpoint to reset</p>
@@ -645,7 +651,7 @@ of that is bound to this key, return a <code>200</code>.</li>
 </ul></li>
 </ol>
 
-<p>If checks 2 and 3 fail, return a <code>401</code> unauthorized. If everything passes, reset the key
+<p>If checks 2 or 3 fail, return a <code>401</code> unauthorized. If everything passes, reset the key
 and return a status <code>200</code> with an empty body.</p>
 <h1 id='errors'>Errors</h1>
 <p>The Scout API returns predictable error responses.
